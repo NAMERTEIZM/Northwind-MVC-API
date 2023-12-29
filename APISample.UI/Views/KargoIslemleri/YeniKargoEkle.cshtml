@@ -1,0 +1,9 @@
+﻿@model ShipperDTO
+
+<form asp-controller="" asp-action="VeriEkle" method="post">
+    @Html.AntiForgeryToken()
+
+    Şirket Adı: <input type="text" asp-for="CompanyName" value="" /><br />
+    TEL: <input type="text" asp-for="Phone" value="" />
+    <input type="submit" value="Kargo Ekle" />
+</form>

@@ -1,0 +1,39 @@
+﻿@model List<ProductSelectDTO>
+<a class="btn btn-success" asp-action="ProductEkle">Ekle</a>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün Adı</th>
+            <th>Kategori</th>
+            <th>Üretici</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th>Birim başına miktar</th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductID</td>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryName</td>
+                <td>@item.CompanyName</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.UnitsInStock</td>
+                <td>@item.QuantityPerUnit</td>
+                <td>
+                    <a class="btn btn-success" asp-action="ProductDoldurGetir" asp-route-id="@item.ProductID">Düzenle</a>
+                    <form asp-action="ProductSil" asp-route-id="@item.ProductID" method="post">
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

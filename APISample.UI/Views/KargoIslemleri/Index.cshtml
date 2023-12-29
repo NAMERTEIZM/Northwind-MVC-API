@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    //var listem = ViewBag.liste;
+}
+
+<div>
+    <span>
+        @ViewBag.ciro TL
+    </span>
+</div>
+
+@if (TempData["sonuc"] != null && TempData["sonuc"] == "kargo eklendi..")
+{
+    <div class="text-success">
+        @TempData["sonuc"]
+    </div>
+}
+@*else BURAYA BAK
+{
+    <div class="text-danger">
+        @TempData["sonuc"]
+    </div>
+}*@
+
+<hr />
+
+<a class="btn btn-outline-primary" asp-action="YeniKargoEkle">Kargo Ekle</a>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Sıra:</th>
+            <th>Şirket Adı</th>
+            <th>Telefonu</th>
+            <th>
+                <a class="btn btn-success" asp-action="KargoDuzenle">Düzenle</a>
+                <a class="btn btn-success" asp-action="KargoSil" asp-route-id="">Sil</a>
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in (List<ShipperDTO>)ViewBag.liste)
+        {
+            <tr>
+                <td>@item.ShipperID</td>
+                <td>@item.CompanyName</td>
+                <td>@item.Phone</td>
+                <td>
+                    <a class="btn btn-success" asp-action="KargoDuzenle" asp-route-id="@item.ShipperID">Düzenle</a>
+                    <a class="btn btn-success" asp-action="KargoSil" asp-route-id="@item.ShipperID">Sil</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
